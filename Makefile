@@ -1,10 +1,11 @@
-
 KERNEL_VER:=$(shell uname -r)
 KERNEL_DIR:=/lib/modules/$(KERNEL_VER)/build
 INSTALL_DIR:=/lib/modules/$(KERNEL_VER)/ttyPos
 
 obj-m := ttyPos.o
 
+dkms:
+	$(MAKE) modules -C $(C) M="$(M)/$@"
 
 all:
 	$(MAKE) modules -C $(KERNEL_DIR) M=$(shell pwd)
@@ -21,3 +22,4 @@ uninstall:
 	$(RM) $(INSTALL_DIR)/ttyPos.ko
 	/sbin/depmod -a
 
+.PHONY: all
