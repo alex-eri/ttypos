@@ -1026,7 +1026,7 @@ static int pos_usb_probe(struct usb_interface *interface,
 		return -ENOMEM;
 	}
 
-	printk(KERN_ALERT "ttyPos probe:%s %s,index:%d\n",DRV_VERSION,VERSION_DATE,i);
+	printk(KERN_INFO "ttyPos probe:%s %s,index:%d\n",DRV_VERSION,VERSION_DATE,i);
 
 	pdx->devIndex = i;
 	pdx_table[pdx->devIndex] = pdx;
@@ -1237,7 +1237,7 @@ static int __init pos_tty_init(void)
 {
 	int result,i;
 
-	printk(KERN_ALERT "ttyPos:%s %s\n",DRV_VERSION,VERSION_DATE);
+	printk(KERN_INFO "ttyPos:%s %s\n",DRV_VERSION,VERSION_DATE);
 
     for(i=0;i<POS_TTY_MINORS;i++)
 		pdx_table[i] = NULL;
