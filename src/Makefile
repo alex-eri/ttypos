@@ -2,6 +2,7 @@ KERNEL_VER:=$(shell uname -r)
 KERNEL_DIR:=/lib/modules/$(KERNEL_VER)/build
 INSTALL_DIR:=/lib/modules/$(KERNEL_VER)/ttyPos
 
+ccflags-y += -Wno-error
 obj-m := ttyPos.o
 
 dkms:

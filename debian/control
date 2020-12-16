@@ -1,0 +1,8 @@
+Source: ttypos-dkms
+Maintainer: Aleksandr Stepanov <sa@eri.su> 
+Build-Depends: debhelper (>= 9), dkms
+
+Package: ttypos-dkms
+Architecture: all
+Depends: ${misc:Depends}
+Description: DKMS source for the PAX 

@@ -1,0 +1,7 @@
+Package: ttypos-dkms
+Version: 20.12-11
+Architecture: all
+Maintainer: Aleksandr Stepanov <sa@eri.su>
+Installed-Size: 52
+Depends: dkms (>= 2.1.0.0)
+Description: DKMS source for the PAX
