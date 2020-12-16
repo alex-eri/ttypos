@@ -661,8 +661,9 @@ static void pos_close(struct tty_struct *tty, struct file *filp)
 
 	if (pdx == NULL)
 		return;
-    if(pdx_table[pdx->devIndex]==NULL)
-        return;
+
+	if (pdx_table[pdx->devIndex]==NULL)
+		return;
 
 	if (pdx->ThreadState == THREAD_CREATED) {
 		pdx->ThreadState = THREAD_CLOSE;

@@ -1,6 +1,0 @@
-fe6a0dc977cd103122499b9041b6fe86  usr/share/doc/ttypos-dkms/changelog.Debian.gz
-d9c2b9a0b619564469938e62b57eb146  usr/src/ttypos-20.12/Makefile
-7974e4f58c979692bcc95f7705c075e1  usr/src/ttypos-20.12/dkms.conf
-f8060089fe8b5261babb06183a9d3e4d  usr/src/ttypos-20.12/ttyPos.c
-8d7e243721ac08ec1862cd6e6a084617  usr/src/ttypos-20.12/ttyPos.h
-105cf97570d5262131afe08339a8e3d5  usr/src/ttypos-20.12/ttyTest.c
