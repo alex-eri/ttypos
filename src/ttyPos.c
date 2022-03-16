@@ -717,7 +717,7 @@ static int pos_write(struct tty_struct *tty, const unsigned char *buf,
 	return retval;
 }
 
-static int pos_write_room(struct tty_struct *tty)
+static unsigned int pos_write_room(struct tty_struct *tty)
 {
 	struct tty_pos *pdx = tty->driver_data;
 	int room = -EINVAL;
@@ -891,7 +891,7 @@ static void pos_flush_buffer(struct tty_struct *tty)
 	INIT_POOL_BUFFER(pdx->TxPool);
 }
 
-static int pos_chars_in_buffer(struct tty_struct *tty)
+static unsigned int pos_chars_in_buffer(struct tty_struct *tty)
 {
 	int in_buf_len;
 	struct tty_pos *pdx = tty->driver_data;
@@ -1243,9 +1243,9 @@ static int __init pos_tty_init(void)
     for(i=0;i<POS_TTY_MINORS;i++)
 		pdx_table[i] = NULL;
 
-	pos_tty_driver = alloc_tty_driver(POS_TTY_MINORS);
-	if (!pos_tty_driver)
-		return -ENOMEM;
+	pos_tty_driver = tty_alloc_driver(POS_TTY_MINORS, 0);
+	if (IS_ERR(pos_tty_driver))
+		return PTR_ERR(pos_tty_driver);
 
 	pos_tty_driver->owner = THIS_MODULE;
 	pos_tty_driver->driver_name = "usbpos";
@@ -1297,7 +1297,7 @@ static int __init pos_tty_init(void)
 byebye2:
 	tty_unregister_driver(pos_tty_driver);
 byebye1:
-    put_tty_driver(pos_tty_driver);
+    tty_driver_kref_put(pos_tty_driver);
 
 	return result;
 }
@@ -1308,7 +1308,7 @@ static void __exit pos_tty_exit(void)
     
 	usb_deregister(&pos_usb_driver);
 	tty_unregister_driver(pos_tty_driver);
-    put_tty_driver(pos_tty_driver);
+    tty_driver_kref_put(pos_tty_driver);
 
 #ifdef LINUX_VERSION_CODE
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0))
