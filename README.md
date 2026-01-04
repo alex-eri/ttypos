@@ -1,3 +1,5 @@
+Original code downloaded from Cloudwalk at 2020. There is new upstream versions, somewhere...
+
 ttyPos driver for PAX bank pinpads
 ===
 
